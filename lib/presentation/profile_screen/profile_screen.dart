@@ -1,8 +1,5 @@
 import 'package:clubmaster/core/app_export.dart';
 import 'package:clubmaster/routes/app_routes.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:sizer/sizer.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

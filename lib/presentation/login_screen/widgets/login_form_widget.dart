@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../core/app_export.dart';
+import '../../../routes/app_routes.dart';
 import '../../../theme/app_theme.dart';
 import 'forgot_password_screen.dart';
 
@@ -283,27 +285,16 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton.icon(
-                onPressed: () {
-                  // TODO: Open contact / support screen
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        'Contactez l\'administration pour créer votre compte',
-                      ),
-                      behavior: SnackBarBehavior.floating,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  );
+               onPressed: () {
+                  context.push(AppRoutes.registrationScreen);
                 },
                 icon: Icon(
-                  Icons.support_agent_rounded,
+                  Icons.person_add_alt_1_rounded,
                   size: 18,
                   color: theme.colorScheme.primary,
                 ),
                 label: Text(
-                  'Contacter l\'administration',
+                  'Créer un compte',
                   style: GoogleFonts.plusJakartaSans(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
@@ -327,7 +318,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             // Version info
             Center(
               child: Text(
-                'ClubMaster v2.4.1 · Portail Adhérent',
+                'ClubMaster v1.0.0 · Portail Adhérent',
                 style: GoogleFonts.plusJakartaSans(
                   fontSize: 11,
                   color: theme.colorScheme.onSurfaceVariant.withAlpha(128),

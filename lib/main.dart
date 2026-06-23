@@ -1,6 +1,5 @@
 import 'package:clubmaster/core/theme_notifier.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import './widgets/custom_error_widget.dart';

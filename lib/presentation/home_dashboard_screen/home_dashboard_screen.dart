@@ -94,7 +94,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen>
   Future<void> _handleRefresh() async {
     // TODO: Replace with [Riverpod/Bloc] for production — refresh member data
     await Future.delayed(const Duration(milliseconds: 1200));
-    if (mounted);
+    if (mounted) {}
   }
 
   @override
