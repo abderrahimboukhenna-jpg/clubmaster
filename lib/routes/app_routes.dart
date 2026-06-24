@@ -35,6 +35,22 @@ class AppRoutes {
 
 final GoRouter appRouter = GoRouter(
   initialLocation: AppRoutes.initial,
+  errorBuilder: (context, state) {
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Text(
+              state.error.toString(),
+              style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ),
+    );
+  },
   routes: [
     GoRoute(
       path: AppRoutes.initial,
@@ -163,39 +179,41 @@ final GoRouter appRouter = GoRouter(
       ),
     ),
     GoRoute(
+  path: AppRoutes.successRegistrationScreen,
+  builder: (context, state) {
+    final dossierNumber = state.extra is String ? state.extra as String : null;
 
- path: AppRoutes.successRegistrationScreen,
+    if (dossierNumber == null || dossierNumber.isEmpty) {
+      return Scaffold(
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Text(
+              'Numéro de dossier manquant ou invalide.',
+              style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      );
+    }
 
- builder: (context, state) {
-
-   return SuccessRegistrationScreen(
-
-     dossierNumber:
-
-       state.extra as String,
-
-   );
-
- },
-
+    return SuccessRegistrationScreen(
+      dossierNumber: dossierNumber,
+    );
+  },
 ),
-
 GoRoute(
+  path: AppRoutes.generateReceiptScreen,
+  builder: (context, state) {
+    final args = state.extra is GenerateReceiptArgs
+        ? state.extra as GenerateReceiptArgs
+        : null;
 
- path: AppRoutes.generateReceiptScreen,
-
- builder: (context, state) {
-
-   return GenerateReceiptScreen(
-
-     args:
-
-      state.extra as GenerateReceiptArgs?,
-
-   );
-
- },
-
+    return GenerateReceiptScreen(
+      args: args,
+    );
+  },
 ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {

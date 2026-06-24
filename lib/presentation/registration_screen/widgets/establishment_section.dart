@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -14,7 +16,7 @@ class EstablishmentSection extends StatelessWidget {
   final List<String> establishments;
   final String? selectedEstablishment;
   final String? selectedGender;
-  final dynamic identityPhoto; // XFile? — kept dynamic to avoid image_picker dependency here
+  final dynamic identityPhoto; 
 
   final String? establishmentError;
   final String? firstNameArError;
@@ -374,10 +376,13 @@ class EstablishmentSection extends StatelessWidget {
                       )
                     : ClipRRect(
                         borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          identityPhoto.path as String,
-                          fit: BoxFit.cover,
-                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.file(
+                            File(identityPhoto.path),
+                            fit: BoxFit.cover,
+                          ),
+                        )
                       ),
               ),
             ),

@@ -9,8 +9,8 @@ import 'routes/app_routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // ── Preload font — fixes lag on first theme toggle ──
-  await GoogleFonts.pendingFonts([GoogleFonts.plusJakartaSans()]);
+  // // ── Preload font — fixes lag on first theme toggle ──
+  // await GoogleFonts.pendingFonts([GoogleFonts.plusJakartaSans()]);
 
   // ── Load saved theme before runApp ──
   final themeNotifier = ThemeNotifier();
